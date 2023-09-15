@@ -7,6 +7,7 @@ const Home = () => {
     const [selectedCourse, setSelectedCourse] = useState([])
     const [creditTime, setCreditTime] = useState(0);
     const [remainingHour, setRemainingHour] = useState(20)
+    const [totalPrice, setTotalPrice] = useState(0)
 
     useEffect(() => {
         fetch('./data.json')
@@ -17,33 +18,38 @@ const Home = () => {
     const handleSelected = (course) => {
         const isExist = selectedCourse.find(item => item.id == course.id)
         let creditCount = course.credit;
+        let priceCount = course.price;
         if (isExist) {
             return alert('already taken')
         } else {
             selectedCourse.map(credithour => {
                 creditCount = creditCount + credithour.credit;
-            } )
+            })
 
             const totalRemainingHour = 20 - creditCount;
-            if(creditCount > 20) {
+            if (creditCount > 20) {
                 return alert('cant add more')
             }
-           
+            selectedCourse.map(price => {
+                priceCount = priceCount + price.price;
+            })
+            console.log(priceCount);
             const newCourseList = [...selectedCourse, course];
             setSelectedCourse(newCourseList);
             setCreditTime(creditCount)
             setRemainingHour(totalRemainingHour);
+            setTotalPrice(priceCount)
 
         }
 
     }
 
     return (
-        <div className="flex gap-10 mt-6 max-w-7xl mx-auto">
+        <div className="flex gap-10 mt-6 max-w-[1400px] mx-auto">
             <div className="w-3/4 grid grid-cols-3 gap-4 text-center">
                 {
-                    courseList.map(course => (<div key={course.id} className="bg-base-100 rounded-xl p-4 w-[300px] space-y-4">
-                        <figure><img src={course.img} alt="Shoes" /></figure>
+                    courseList.map(course => (<div key={course.id} className="bg-base-100 rounded-xl p-4 w-[330px] space-y-4">
+                        <figure><img className="w-[320px]" src={course.img} alt="Shoes" /></figure>
                         <div className="space-y-3">
                             <h2 className="text-left text-[18px] font-bold">{course.name}</h2>
                             <p className="text-left">{course.course_details}</p>
@@ -56,7 +62,9 @@ const Home = () => {
                     </div>))
                 }
             </div>
-            <Cart remainingHour={remainingHour} creditTime={creditTime} selectedCourse={selectedCourse}></Cart>
+            <div className="h-96 w-1/4">
+                <Cart totalPrice={totalPrice}remainingHour={remainingHour} creditTime={creditTime} selectedCourse={selectedCourse}></Cart>
+            </div>
         </div>
 
     );

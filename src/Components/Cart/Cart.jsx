@@ -1,7 +1,7 @@
 import PropType from 'prop-types'
-const Cart = ({selectedCourse, creditTime, remainingHour}) => {
+const Cart = ({selectedCourse, creditTime, remainingHour, totalPrice}) => {
     return (
-        <div className="w-1/4 bg-base-100 h-96 p-4 rounded-xl space-y-4">
+        <div className="bg-base-100 p-4 rounded-xl space-y-4">
             <h2 className="text-xl font-bold text-[#2F80ED]">Credit Hour Remaining {remainingHour} hr </h2>
             <hr />
             <h2 className="text-2xl font-bold">Course Name</h2>
@@ -13,7 +13,7 @@ const Cart = ({selectedCourse, creditTime, remainingHour}) => {
             <hr />
             <h3>Total Credit Hour: {creditTime}</h3>
             <hr />
-            <h3>Total Price: 0</h3>
+            <h3>Total Price: {totalPrice}</h3>
         </div>
     );
 };
