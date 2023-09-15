@@ -6,6 +6,7 @@ const Home = () => {
     const [courseList, setCourseList] = useState([])
     const [selectedCourse, setSelectedCourse] = useState([])
     const [creditTime, setCreditTime] = useState(0);
+    const [remainingHour, setRemainingHour] = useState(20)
 
     useEffect(() => {
         fetch('./data.json')
@@ -31,6 +32,7 @@ const Home = () => {
             const newCourseList = [...selectedCourse, course];
             setSelectedCourse(newCourseList);
             setCreditTime(creditCount)
+            setRemainingHour(totalRemainingHour);
 
         }
 
@@ -54,7 +56,7 @@ const Home = () => {
                     </div>))
                 }
             </div>
-            <Cart creditTime={creditTime} selectedCourse={selectedCourse}></Cart>
+            <Cart remainingHour={remainingHour} creditTime={creditTime} selectedCourse={selectedCourse}></Cart>
         </div>
 
     );
