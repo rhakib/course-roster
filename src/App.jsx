@@ -10,6 +10,7 @@ function App() {
       <div className="bg-[#F3F3F3]">
         <Header></Header>
         <Home></Home>
+        
       </div>
 
     </>
