@@ -3,7 +3,7 @@ const Cart = ({selectedCourse, creditTime, remainingHour, totalPrice}) => {
     return (
         <div className="bg-base-100 p-4 rounded-xl space-y-4">
             <h2 className="text-xl font-bold text-[#2F80ED]">Credit Hour Remaining {remainingHour} hr </h2>
-            <hr />
+            <hr/>
             <h2 className="text-2xl font-bold">Course Name</h2>
             <ul className="list-decimal list-inside text-[#1C1B1B99] ">
                 {

@@ -51,10 +51,10 @@ const Home = () => {
     }
 
     return (
-        <div className="flex flex-col md:flex-row gap-10 mt-8 max-w-[1400px] mx-auto">
-            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center px-4 md:px-0 ml-4 md:ml-0">
+        <div className="flex flex-col md:flex-row mt-8 gap-6 md:gap-4  lg:gap-10  lg:max-w-[1450px] ml-6 lg:mx-auto">
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-8 text-center px-4 md:px-0">
                 {
-                    courseList.map(course => (<div key={course.id} className="bg-base-100 rounded-xl p-4 lg:w-[330px] space-y-4">
+                    courseList.map(course => (<div key={course.id} className="bg-base-100 rounded-xl p-4 md:w-[230px] lg:w-[330px] space-y-4">
                         <figure><img className="w-[400px] md:w-[320px]" src={course.img} alt="Shoes" /></figure>
                         <div className="space-y-4">
                             <h2 className="text-left text-[18px] font-bold">{course.name}</h2>
@@ -74,7 +74,7 @@ const Home = () => {
                     </div>))
                 }
             </div>
-            <div className="h-96 md:w-1/4 px-4 md:px-0 ml-4 md:ml-0">
+            <div className="h-96 lg:w-1/4 md:w-[240px] px-4 md:px-0 ml-4 md:ml-0">
                 <Cart totalPrice={totalPrice} remainingHour={remainingHour} creditTime={creditTime} selectedCourse={selectedCourse}></Cart>
             </div>
             <ToastContainer></ToastContainer>
